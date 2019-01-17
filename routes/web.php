@@ -13,9 +13,14 @@
 
 Route::get('/', 'ToDoController@index');
 
+Route::get('/about', 'ToDoController@index')->name('about');
+
 Route::post('/create','ToDoController@create')->name('create');
 
 Route::get('/update/{id}','ToDoController@update')->name('update');
 
 Route::get('/delete/{id}','ToDoController@delete')->name('delete');
 
+Auth::routes();
+
+Route::get('/home', 'ToDoController@index')->name('home');

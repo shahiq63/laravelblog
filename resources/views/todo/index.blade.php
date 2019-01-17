@@ -1,6 +1,6 @@
-@extends('todo.layout')
+@extends('layouts.app')
 
-@section('layout_content')
+@section('content')
 
 <div id="myDIV" class="header">
   
@@ -15,13 +15,13 @@
 
 </div>
 
-<ul id="myUL">
+<ul id="myUL" class="list-group list_group">
 
   <?php foreach($tasks as $task):?>
 
     <?php if($task->status == 0):?>
     
-    <li onclick="location.href='{{ route('update',['id'=>$task->id]) }}'" class="checked">
+    <li class="list-group-item list_item" onclick="location.href='{{ route('update',['id'=>$task->id]) }}'" class="checked">
       <?php echo $task->content;?>
       <a href="{{ route('delete',['id'=>$task->id]) }}" class="close">x</a>
     </li>
