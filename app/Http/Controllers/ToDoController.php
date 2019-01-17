@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App/Task;
+use App\Task;
 
 class ToDoController extends Controller
 {
   public function index()
   {
-    $tasks = Task:all();
+    $tasks = Task::all();
     return view('todo.index',['tasks'=>$tasks]);
 
   }
@@ -22,21 +22,21 @@ class ToDoController extends Controller
       $task->content = $request->input('task');
       $task->save();
     }
-    return redirect->back();
+    return redirect()->back();
   }
 
   public function update($id)
   {
     $task = Task::find($id);
-    $task->toggleTask();
-    $task->save();
-    return redirect->back();
+     $task->toggleStatus();
+     $task->save();
+     return redirect()->back();
   }
 
   public function delete($id)
   {
     $task = Task::find($id);
     $task->delete();
-    return redirect->back();
+    return redirect()->back();
   }
 }

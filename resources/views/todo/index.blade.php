@@ -16,12 +16,30 @@
 </div>
 
 <ul id="myUL">
-  <li>Hit the gym</li>
-  <li class="checked">Pay bills</li>
-  <li>Meet George</li>
-  <li>Buy eggs</li>
-  <li>Read a book</li>
-  <li>Organize office</li>
-</ul>
+
+  <?php foreach($tasks as $task):?>
+
+    <?php if($task->status == 0):?>
+    
+    <li onclick="location.href='{{ route('update',['id'=>$task->id]) }}'" class="checked">
+      <?php echo $task->content;?>
+      <a href="{{ route('delete',['id'=>$task->id]) }}" class="close">x</a>
+    </li>
+
+    <?php endif;?>
+
+    <?php if($task->status == 1):?>
+    
+    <li onclick="location.href='{{ route('update',['id'=>$task->id]) }}'">
+     <?php echo $task->content; ?> 
+     <a href="{{ route('delete',['id'=>$task->id]) }}"class="close">x</a>
+   </li>
+
+    <?php endif;?>
+  
+  <?php endforeach ?>
+
+   
+  </ul>
 
 @endsection
