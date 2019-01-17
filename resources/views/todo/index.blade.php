@@ -21,7 +21,7 @@
 
     <?php if($task->status == 0):?>
     
-    <li class="list-group-item list_item" onclick="location.href='{{ route('update',['id'=>$task->id]) }}'" class="checked">
+    <li class="list-group-item list_item checked" onclick="location.href='{{ route('update',['id'=>$task->id]) }}'">
       <?php echo $task->content;?>
       <a href="{{ route('delete',['id'=>$task->id]) }}" class="close">x</a>
     </li>
@@ -30,7 +30,7 @@
 
     <?php if($task->status == 1):?>
     
-    <li onclick="location.href='{{ route('update',['id'=>$task->id]) }}'">
+    <li  class="list-group-item list_item" onclick="location.href='{{ route('update',['id'=>$task->id]) }}'">
      <?php echo $task->content; ?> 
      <a href="{{ route('delete',['id'=>$task->id]) }}"class="close">x</a>
    </li>
