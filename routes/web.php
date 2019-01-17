@@ -11,6 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'ToDoController@index');
+
+Route::post('/create','ToDoController@create')->name('create');
+
+Route::get('/update/{id}','ToDoController@update')->name('update');
+
+Route::get('/delete()/{id}','ToDoController@delete')->name('delete');
+
