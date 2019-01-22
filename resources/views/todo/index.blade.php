@@ -5,8 +5,9 @@
 <div id="myDIV" class="header">
   
   <h2 style="margin:5px">My To Do List</h2>
-  <form method="POST" action="{{ route('create') }}">
+  <form method="POST" enctype="multipart/form-data" action="{{ route('create') }}">
     <input type="text" name ="task" id="myInput" placeholder="Title...">
+    <input type="file" name="photo">
     <input type="submit" value="Add" class="addBtn">
 
     {{ csrf_field() }}

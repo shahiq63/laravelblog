@@ -17,6 +17,15 @@ class ToDoController extends Controller
 
   public function create(Request $request)
   {
+    // $file = $request->file('photo');
+
+    // // generate a new filename. getClientOriginalExtension() for the file extension
+    // $filename = 'profile-photo-' . time() . '.' . $file->getClientOriginalExtension();
+
+    // // save to storage/app/photos as the new $filename
+    // $path = $file->storeAs('photos', $filename);
+    // var_dump($path);
+
     if ($request->input('task')) {
       $task = new Task;
       $task->content = $request->input('task');
