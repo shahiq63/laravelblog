@@ -17,18 +17,17 @@ class ToDoController extends Controller
 
   public function create(Request $request)
   {
-    // $file = $request->file('photo');
-
-    // // generate a new filename. getClientOriginalExtension() for the file extension
-    // $filename = 'profile-photo-' . time() . '.' . $file->getClientOriginalExtension();
-
-    // // save to storage/app/photos as the new $filename
-    // $path = $file->storeAs('photos', $filename);
-    // var_dump($path);
-
-    if ($request->input('task')) {
+     $this->validate($request,[
+      'task' => 'required|unique:tasks,content',
+      'photo'=> 'required'
+     ]);
+     $file = $request->file('photo');
+     $filename = 'profile-photo-' . time() . '.' . $file->getClientOriginalExtension();
+     $path = $file->storeAs('photos', $filename);
+     if ($request->input('task') && $request->file('photo')) {
       $task = new Task;
       $task->content = $request->input('task');
+      $task->Image_path = $path;
       $task->save();
     }
     return redirect()->back();

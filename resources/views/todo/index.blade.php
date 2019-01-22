@@ -16,6 +16,17 @@
 
 </div>
 
+ @if(count($errors)>0)
+
+    <ul>
+      @foreach($errors->all() as $error)
+
+      <li class="alert"> {{$error}}</li>
+      @endforeach
+    </ul>
+
+ @endif
+
 <ul id="myUL" class="list-group list_group">
 
   <?php foreach($tasks as $task):?>
