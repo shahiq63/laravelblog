@@ -8,6 +8,18 @@
   padding: 0;
 }
 
+.subBtn {
+  padding: 10px;
+  width: 25%;
+  background: #d9d9d9;
+  color: #555;
+  float: left;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
 /* Style the list items */
 .list_item {
   cursor: pointer;
@@ -85,13 +97,6 @@
 }
 
 /* Style the input */
-input {
-  border: none;
-  width: 75%;
-  padding: 10px;
-  float: left;
-  font-size: 16px;
-}
 
 /* Style the "Add" button */
 .addBtn {

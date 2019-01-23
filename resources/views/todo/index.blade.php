@@ -2,14 +2,19 @@
 
 @section('content')
 
-<div id="myDIV" class="header">
+<div id="myDIV" class="container">
   
   <h2 style="margin:5px">My To Do List</h2>
   <form method="POST" enctype="multipart/form-data" action="{{ route('create') }}">
-    <input  class ="form-control"type="text" name ="task" id="myInput" placeholder="Title...">
-    <input type="file" name="photo">
-    <input type="submit" value="Add" class="btn btn-primary">
-
+    <div class="form-group">
+      <input type="text" name ="task" id="myInput" placeholder="Title" class="form-control">
+    </div>
+    <div class="form-group">
+      <input type="file" name="photo" class="form-control-file">
+    </div>
+    <div class="form-group">
+    <button type="Submit" class="btn btn-primary">Submit</button>
+  </div>
     {{ csrf_field() }}
   
   </form>
