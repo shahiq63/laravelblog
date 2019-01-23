@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Task;
+use Auth;
 
 class ToDoController extends Controller
 {
@@ -24,21 +25,21 @@ class ToDoController extends Controller
      $file = $request->file('photo');
      $filename = 'profile-photo-' . time() . '.' . $file->getClientOriginalExtension();
      $path = $file->storeAs('photos', $filename);
-     if ($request->input('task') && $request->file('photo')) {
+     if ($request->input('task') && $request->file('photo') && isset(Auth::user()->name)) {
       $task = new Task;
       $task->content = $request->input('task');
       $task->Image_path = $path;
+      $task->username = Auth::user()->name;
       $task->save();
+      return redirect()->back();
+    }else {
+      return redirect()->back()->withErrors(['Please Login First']);
     }
-    return redirect()->back();
   }
-
+ 
   public function update($id)
   {
     $task = Task::find($id);
-     // $task->toggleStatus();
-     // $task->save();
-     //return redirect()->back();
      return view('todo.update',['task'=>$task]);
   }
 
@@ -49,11 +50,7 @@ class ToDoController extends Controller
       $task->content = $request->input('task');
       $task->save();
     }
-
     return redirect('/');
-    // $tasks = Task::all();
-    // return view('todo.index',['tasks'=>$tasks]);
-
   }
 
   public function delete($id)

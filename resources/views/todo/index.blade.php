@@ -6,9 +6,9 @@
   
   <h2 style="margin:5px">My To Do List</h2>
   <form method="POST" enctype="multipart/form-data" action="{{ route('create') }}">
-    <input type="text" name ="task" id="myInput" placeholder="Title...">
+    <input  class ="form-control"type="text" name ="task" id="myInput" placeholder="Title...">
     <input type="file" name="photo">
-    <input type="submit" value="Add" class="addBtn">
+    <input type="submit" value="Add" class="btn btn-primary">
 
     {{ csrf_field() }}
   
