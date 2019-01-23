@@ -19,6 +19,9 @@ Route::post('/create','ToDoController@create')->name('create');
 
 Route::get('/update/{id}','ToDoController@update')->name('update');
 
+Route::post('/updated/{id}','ToDoController@updated')->name('updated');
+
+
 Route::get('/delete/{id}','ToDoController@delete')->name('delete');
 
 Auth::routes();

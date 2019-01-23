@@ -36,9 +36,24 @@ class ToDoController extends Controller
   public function update($id)
   {
     $task = Task::find($id);
-     $task->toggleStatus();
-     $task->save();
-     return redirect()->back();
+     // $task->toggleStatus();
+     // $task->save();
+     //return redirect()->back();
+     return view('todo.update',['task'=>$task]);
+  }
+
+  public function updated($id , Request $request)
+  {
+    $task = Task::find($id);
+    if($request->input('task')) {
+      $task->content = $request->input('task');
+      $task->save();
+    }
+
+    return redirect('/');
+    // $tasks = Task::all();
+    // return view('todo.index',['tasks'=>$tasks]);
+
   }
 
   public function delete($id)
