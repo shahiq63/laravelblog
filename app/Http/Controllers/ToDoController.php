@@ -6,14 +6,19 @@ use Illuminate\Http\Request;
 
 use App\Task;
 use Auth;
-
+use DB;
 class ToDoController extends Controller
 {
   public function index()
   {
-    $tasks = Task::all();
-    return view('todo.index',['tasks'=>$tasks]);
-
+    // $tasks = Task::all();
+    if(isset(Auth::user()->name)){
+      $name = Auth::user()->name;
+      $tasks = DB::table('tasks')->where('username', $name)->get();
+      return view('todo.index',['tasks'=>$tasks]);
+    }else {
+      return view('todo.index');
+    }
   }
 
   public function create(Request $request)

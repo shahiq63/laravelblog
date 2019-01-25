@@ -33,7 +33,7 @@
  @endif
 
 <ul id="myUL" class="list-group list_group">
-
+  @if(isset($tasks))
   <?php foreach($tasks as $task):?>
 
     <?php if($task->status == 0):?>
@@ -53,10 +53,9 @@
    </li>
 
     <?php endif;?>
-  
-  <?php endforeach ?>
 
-   
+  <?php endforeach ?>
+  @endif
   </ul>
 
 @endsection
