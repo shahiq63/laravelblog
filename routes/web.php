@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'ToDoController@index');
+Route::get('/', 'ToDoController@index')->middleware('auth');
 
 Route::get('/about', 'ToDoController@index')->name('about');
 
@@ -28,4 +28,4 @@ Route::get('/delete/{id}','ToDoController@delete')->name('delete');
 
 Auth::routes();
 
-Route::get('/home', 'ToDoController@index')->name('home');
+Route::get('/home', 'ToDoController@index')->name('home')->middleware('auth');
