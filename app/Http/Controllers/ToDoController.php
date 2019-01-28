@@ -67,6 +67,13 @@ class ToDoController extends Controller
     return redirect('/');
   }
 
+  public function assign($id)
+  {
+   $task = Task::find($id);
+   $users = User::all();
+   return view('todo.assign',['task'=>$task,'users'=>$users]); 
+  }
+  
   public function delete($id)
   {
     $task = Task::find($id);

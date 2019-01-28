@@ -11,6 +11,7 @@
         <button class="btn btn-link" data-toggle="collapse" data-target="#collapse{{$task->id}}" aria-expanded="true" aria-controls="collapseOne">
           {{$task->title}}
         </button>
+        <a href="{{route('assign',['id'=>$task->id])}}">Assign</a>
       </h5>
     </div>
 
